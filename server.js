@@ -22,6 +22,14 @@ app.get("/", (req, res) => {
   res.send("Hi!");
 });
 
+if (process.env.NODE_ENV === 'development') {
+  app.use(express.errorHandler({ dumpExceptions: true, showStack: true }));
+}
+
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.errorHandler());
+}
+
 const bar = new ProgressBar(":bar", { total: 100 });
 
 const timer = setInterval(async () => {
