@@ -2,12 +2,9 @@ const express = require("express");
 const chalk = require("chalk");
 const ProgressBar = require("progress");
 const EventEmitter = require("events");
+const fs = require("fs");
 
 require("dotenv").config();
-
-const buf = Buffer.from("Hey!H1. -` ■!▼");
-
-console.log(buf);
 
 const eventEmitter = new EventEmitter();
 
@@ -20,6 +17,8 @@ eventEmitter.emit("start", 1, 100);
 const app = express();
 
 app.get("/", (req, res) => {
+  const stream = fs.createReadStream(`${__dirname}/queue.js`);
+  stream.pipe(res);
   res.send("Hi!");
 });
 
