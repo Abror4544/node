@@ -35,7 +35,7 @@ const timer = setInterval(async () => {
 
 const content = 'const hiMan = () => console.log("Hi man")';
 
-fs.writeFile("./queue.js", content, (err) => {
+fs.appendFile("./queue.js", content, (err) => {
   if (err) {
     console.error(err);
   }
