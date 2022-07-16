@@ -42,6 +42,25 @@ fs.appendFile("./queue.js", content, (err) => {
   // file written successfully
 });
 
+const folderName = "./a";
+
+try {
+  if (!fs.existsSync(folderName)) {
+    fs.mkdirSync(folderName);
+  }
+} catch (err) {
+  console.error(err);
+}
+
+fs.readdirSync(folderName);
+
+fs.rename(folderName, "./b", (err) => {
+  if (err) {
+    console.error(err);
+  }
+  // done
+});
+
 process.on("SIGTERM", () => {
   server.close(() => {
     console.log("Process terminated!");
