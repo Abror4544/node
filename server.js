@@ -1,5 +1,6 @@
 const express = require("express");
 const chalk = require("chalk");
+const ProgressBar = require("progress");
 
 require("dotenv").config();
 
@@ -9,12 +10,18 @@ app.get("/", (req, res) => {
   res.send("Hi!");
 });
 
-console.log("\x1b[33m%s\x1b[0m", "hi!");
-console.log(chalk.greenBright("hi!"));
+const bar = new ProgressBar(":bar", { total: 100 });
 
-const server = app.listen(3000, () =>
-  console.log(chalk.greenBright("Server is ready!"))
-);
+const timer = setInterval(async () => {
+  bar.tick();
+  if (bar.complete) {
+    clearInterval(timer);
+
+    server = app.listen(3000, () =>
+      console.log(chalk.greenBright("Server is ready!"))
+    );
+  }
+}, 1);
 
 process.on("SIGTERM", () => {
   server.close(() => {
