@@ -1,4 +1,5 @@
 const express = require("express");
+require("dotenv").config();
 
 const app = express();
 
@@ -13,4 +14,3 @@ process.on("SIGTERM", () => {
     console.log("Process terminated!");
   });
 });
- 
