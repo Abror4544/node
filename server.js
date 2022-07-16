@@ -2,7 +2,9 @@ const express = require("express");
 const chalk = require("chalk");
 const ProgressBar = require("progress");
 const EventEmitter = require("events");
-const fs = require("fs");
+const os = require("os");
+
+console.log(os.cpus());
 
 require("dotenv").config();
 
@@ -33,27 +35,3 @@ const timer = setInterval(async () => {
   }
 }, 1);
 
-const content = 'const hiMan = () => console.log("Hi man")';
-
-fs.appendFile("./queue.js", content, (err) => {
-  if (err) {
-    console.error(err);
-  }
-  // file written successfully
-});
-
-const folderName = "./b";
-
-fs.rm(folderName, { recursive: true }, (err) => {
-  if (err) {
-    throw err;
-  }
-
-  console.log(`${folderName} is deleted!`);
-});
-
-process.on("SIGTERM", () => {
-  server.close(() => {
-    console.log("Process terminated!");
-  });
-});
