@@ -3,7 +3,6 @@ const chalk = require("chalk");
 const ProgressBar = require("progress");
 const EventEmitter = require("events");
 const fs = require("fs");
-const path = require("path");
 
 require("dotenv").config();
 
@@ -34,25 +33,13 @@ const timer = setInterval(async () => {
   }
 }, 1);
 
-fs.stat("./queue.js", (err, stats) => {
+fs.readFile("./queue.js", "utf8", (err, data) => {
   if (err) {
     console.error(err);
     return;
   }
-
-  console.log(stats.isFile()); // true
-  console.log(stats.isDirectory()); // false
-  console.log(stats.isSymbolicLink()); // false
-  console.log(stats.size); // 1024000 //= 1MB
+  console.log(data);
 });
-
-const notes = "./queue.js";
-
-console.log(path.dirname(notes)); // /users/joe
-console.log(path.basename(notes)); // notes.txt
-console.log(path.extname(notes));
-console.log(path.resolve(notes));
-console.log(path.normalize(notes));
 
 process.on("SIGTERM", () => {
   server.close(() => {
