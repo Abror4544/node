@@ -5,13 +5,13 @@ require("dotenv").config();
 
 //repl.start();
 
-console.log(code);
-
 const app = express();
 
 app.get("/", (req, res) => {
   res.send("Hi!");
 });
+
+console.log(process.argv);
 
 const server = app.listen(3000, () => console.log("Server is ready!"));
 
