@@ -8,9 +8,10 @@ app.get("/", (req, res) => {
   res.send("Hi!");
 });
 
-console.log("My %s has %d ears", "cat", 2);
-console.log("I am %i years old", "21.4");
-console.log("%o", console);
+const oranges = ["orange", "orange"];
+oranges.forEach((fruit) => {
+  console.count(fruit);
+});
 
 const server = app.listen(3000, () => console.log("Server is ready!"));
 
