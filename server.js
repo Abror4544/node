@@ -33,12 +33,13 @@ const timer = setInterval(async () => {
   }
 }, 1);
 
-fs.readFile("./queue.js", "utf8", (err, data) => {
+const content = 'const hiMan = () => console.log("Hi man")';
+
+fs.writeFile("./queue.js", content, (err) => {
   if (err) {
     console.error(err);
-    return;
   }
-  console.log(data);
+  // file written successfully
 });
 
 process.on("SIGTERM", () => {
