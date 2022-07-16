@@ -51,6 +51,8 @@ const notes = "./queue.js";
 console.log(path.dirname(notes)); // /users/joe
 console.log(path.basename(notes)); // notes.txt
 console.log(path.extname(notes));
+console.log(path.resolve(notes));
+console.log(path.normalize(notes));
 
 process.on("SIGTERM", () => {
   server.close(() => {
