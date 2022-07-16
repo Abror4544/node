@@ -15,4 +15,4 @@ const start = () => {
 start();
 
 // start foo bar zoo baz
-const hiMan = () => console.log("Hi man")
+const hiMan = () => console.log("Hi man");

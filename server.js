@@ -42,23 +42,14 @@ fs.appendFile("./queue.js", content, (err) => {
   // file written successfully
 });
 
-const folderName = "./a";
+const folderName = "./b";
 
-try {
-  if (!fs.existsSync(folderName)) {
-    fs.mkdirSync(folderName);
-  }
-} catch (err) {
-  console.error(err);
-}
-
-fs.readdirSync(folderName);
-
-fs.rename(folderName, "./b", (err) => {
+fs.rm(folderName, { recursive: true }, (err) => {
   if (err) {
-    console.error(err);
+    throw err;
   }
-  // done
+
+  console.log(`${folderName} is deleted!`);
 });
 
 process.on("SIGTERM", () => {
