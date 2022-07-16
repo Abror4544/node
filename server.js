@@ -6,10 +6,11 @@ app.get("/", (req, res) => {
   res.send("Hi!");
 });
 
-const server = app.listen(3000, () => console.log("Server ready"));
+const server = app.listen(3000, () => console.log(process.env));
 
 process.on("SIGTERM", () => {
   server.close(() => {
-    console.log("Process terminated");
+    console.log("Process terminated!");
   });
 });
+ 
