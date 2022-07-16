@@ -1,9 +1,17 @@
 const express = require("express");
 const chalk = require("chalk");
 const ProgressBar = require("progress");
-const fs = require("fs");
+const EventEmitter = require("events");
 
 require("dotenv").config();
+
+const eventEmitter = new EventEmitter();
+
+eventEmitter.on("start", (start, end) => {
+  console.log(`Loading ${start} to ${end}`);
+});
+
+eventEmitter.emit("start", 1, 100);
 
 const app = express();
 
@@ -29,19 +37,3 @@ process.on("SIGTERM", () => {
     console.log("Process terminated!");
   });
 });
-
-const getFile = (fileName) => {
-  return new Promise((resolve, reject) => {
-    fs.readFile(fileName, (err, data) => {
-      if (err) {
-        reject(err); // calling `reject` will cause the promise to fail with or without the error passed as an argument
-        return; // and we don't want to go any further
-      }
-      resolve(data);
-    });
-  });
-};
-
-getFile("./queue.js")
-  .then((data) => console.log(data.toString()))
-  .catch((err) => console.error(err));
