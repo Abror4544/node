@@ -2,11 +2,12 @@ const express = require("express");
 const chalk = require("chalk");
 const ProgressBar = require("progress");
 const EventEmitter = require("events");
-const os = require("os");
-
-console.log(os.cpus());
 
 require("dotenv").config();
+
+const buf = Buffer.from("Hey!H1. -` ■!▼");
+
+console.log(buf);
 
 const eventEmitter = new EventEmitter();
 
@@ -34,4 +35,3 @@ const timer = setInterval(async () => {
     );
   }
 }, 1);
-
