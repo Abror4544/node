@@ -1,5 +1,8 @@
 const express = require("express"); // CommonJS
-const foo = require("./queue"); // CommonJS
+
+if (1 === 1) {
+  const foo = require("./queue"); // CommonJS
+}
 
 // import express from "express"; -   ES6 module
 // import hiMan from "./queue.js"; - ES6 module
