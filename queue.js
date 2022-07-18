@@ -15,4 +15,14 @@ const start = () => {
 start();
 
 // start foo bar zoo baz
-const hiMan = () => console.log("Hi man");
+
+//const hiMan = () => console.log("Hi man");
+//const hiGirl = () => console.log("Hi girl");
+//
+//module.exports = {
+//  hiMan,
+//  hiGirl,
+//}; // CommonJS
+
+exports.hiMan = () => console.log("Hi man"); // Either CommonJS
+exports.hiGirl = () => console.log("Hi girl"); // Either CommonJS
