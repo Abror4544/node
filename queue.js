@@ -16,13 +16,13 @@ start();
 
 // start foo bar zoo baz
 
-//const hiMan = () => console.log("Hi man");
-//const hiGirl = () => console.log("Hi girl");
+const hiCall = () => console.log("Hi call");
+const hiRole = () => console.log("Hi role");
 //
-//module.exports = {
-//  hiMan,
-//  hiGirl,
-//}; // CommonJS
+module.exports = {
+  hiCall,
+  hiRole,
+}; // CommonJS
 
-exports.hiMan = () => console.log("Hi man"); // Either CommonJS
-exports.hiGirl = () => console.log("Hi girl"); // Either CommonJS
+//exports.hiMan = () => console.log("Hi man"); // Either CommonJS, with module.exports in one time it is useless
+//exports.hiGirl = () => console.log("Hi girl"); // Either CommonJS, with module.exports in one time it is useless
